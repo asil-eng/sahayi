@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Welfare Pension Portal :: Online Application (DEMO)</title>
+<!-- Deliberately cluttered, desktop-only layout, like many older portals. FICTIONAL DEMO PAGE. -->
+<style>
+  body { font: 11px Verdana, Arial, sans-serif; color: #555; background: #e9e9e9; margin: 0; }
+  .demo { background: #b00020; color: #fff; padding: 4px 8px; font-weight: bold; text-align: center; }
+  .top { background: #2d4a6b; color: #cfd8e3; padding: 3px 8px; }
+  .top a { color: #cfd8e3; margin-right: 8px; }
+  .hdr { background: linear-gradient(#5b7fa6, #3a5a80); color: #fff; padding: 10px; font-size: 18px; }
+  .hdr small { display: block; font-size: 10px; color: #dde; }
+  marquee { background: #fff3b0; color: #a00; padding: 2px; }
+  .wrap { display: flex; width: 1100px; margin: 0 auto; }
+  .side { width: 200px; background: #d4dbe3; padding: 6px; }
+  .side a { display: block; color: #2d4a6b; padding: 3px 0; border-bottom: 1px dotted #999; }
+  .content { flex: 1; background: #fff; padding: 10px; }
+  .notice { border: 1px solid #ccc; background: #fafafa; padding: 6px; color: #777; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { border: 1px solid #ddd; padding: 3px 5px; vertical-align: top; }
+  td.l { width: 40%; background: #f4f4f4; }
+  .req { color: red; }
+  .sec { background: #3a5a80; color: #fff; font-weight: bold; }
+  input[type=text], input[type=tel], input[type=email], select, textarea { font-size: 11px; width: 220px; }
+  .captcha { font: italic bold 16px monospace; letter-spacing: 4px; background: repeating-linear-gradient(45deg,#ccc,#ccc 2px,#eee 2px,#eee 5px); padding: 2px 10px; color: #444; }
+  .btns input { margin-right: 6px; }
+  .foot { background: #2d4a6b; color: #aab; padding: 8px; text-align: center; margin-top: 10px; }
+  #done { display: none; border: 2px solid green; background: #eaffea; color: #064; padding: 12px; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="demo">DEMO PAGE: fictional portal made for the Sahayi hackathon prototype. Not an official government website.</div>
+<div class="top"><a href="#">Skip to main content</a><a href="#">Screen Reader Access</a><a href="#">A-</a><a href="#">A</a><a href="#">A+</a><a href="#">Sitemap</a><a href="#">Contact Us</a><a href="#">Login</a></div>
+<div class="hdr">Social Security Welfare Pension Management System<small>Department of Local Self Government (Demo) :: Online Services Portal v2.3.1</small></div>
+<marquee>*** Last date for annual mustering extended *** Beneficiaries must link Aadhaar with bank account *** Server maintenance on Sunday 2AM-6AM *** New: Online application for IGNOAPS / IGNWPS / IGNDPS ***</marquee>
+<div class="wrap">
+  <div class="side">
+    <b>Quick Links</b>
+    <a href="#">Home</a><a href="#">About Scheme</a><a href="#">Eligibility Criteria</a><a href="#">Government Orders</a><a href="#">Circulars</a>
+    <a href="?status=1">Check Application Status</a><a href="#">Download Forms</a><a href="#">Mustering Status</a><a href="#">Grievance Redressal</a>
+    <a href="#">RTI</a><a href="#">Tenders</a><a href="#">Photo Gallery</a><a href="#">FAQ</a><a href="#">Help Desk</a>
+  </div>
+  <div class="content">
+    <h2 style="font-size:14px;color:#2d4a6b;margin:0 0 6px">Online Application for Social Security Pension (Form-A)</h2>
+    <div class="notice">
+      Applicants for Old Age Pension (IGNOAPS) should have completed 60 years of age. Annual family income should be below Rs. 1,00,000 as per the income certificate issued by the Village Officer.
+      The application is free of cost. No fee is collected from applicants at any stage. Fields marked <span class="req">*</span> are mandatory.
+      Applicants should keep the scanned copy of the income certificate (JPG/PDF, max 1 MB) ready. Use of browser back button is not permitted.
+    </div>
+
+    <div id="done"></div>
+    <form id="appForm" autocomplete="off">
+      <table>
+        <tr><td colspan="2" class="sec">Part A: Personal Details of the Applicant</td></tr>
+        <tr><td class="l">Name of Applicant (in English, as in Aadhaar) <span class="req">*</span></td><td><input type="text" id="applicantName" name="applicantName"></td></tr>
+        <tr><td class="l">Name of Applicant (in Malayalam)</td><td><input type="text" id="applicantNameMal" name="applicantNameMal"></td></tr>
+        <tr><td class="l">Date of Birth (DD/MM/YYYY) <span class="req">*</span></td><td><input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY" maxlength="10"></td></tr>
+        <tr><td class="l">Gender <span class="req">*</span></td><td>
+          <label><input type="radio" name="gender" value="M"> Male</label>
+          <label><input type="radio" name="gender" value="F"> Female</label>
+          <label><input type="radio" name="gender" value="T"> Transgender</label></td></tr>
+        <tr><td class="l">Type of Pension Applied For <span class="req">*</span></td><td><select id="pensionType" name="pensionType">
+          <option value="">--Select--</option>
+          <option value="OAP">Indira Gandhi National Old Age Pension (IGNOAPS)</option>
+          <option value="WP">Indira Gandhi National Widow Pension (IGNWPS)</option>
+          <option value="DP">Indira Gandhi National Disability Pension (IGNDPS)</option>
+          <option value="AL">Agricultural Labour Pension</option>
+          <option value="UW">Pension to Unmarried Women above 50 Years</option></select></td></tr>
+        <tr><td class="l">Aadhaar No. (UID) <span class="req">*</span></td><td><input type="text" id="aadhaar" name="aadhaar" maxlength="12"></td></tr>
+        <tr><td class="l">Mobile No. (for SMS alerts) <span class="req">*</span></td><td><input type="tel" id="mobile" name="mobile" maxlength="10"></td></tr>
+        <tr><td class="l">E-mail ID</td><td><input type="email" id="email" name="email"></td></tr>
+        <tr><td class="l">Landline No. with STD Code</td><td><input type="text" id="landline" name="landline"></td></tr>
+        <tr><td class="l">Fax No.</td><td><input type="text" id="fax" name="fax"></td></tr>
+        <tr><td class="l">Name of Spouse / Guardian</td><td><input type="text" id="spouseName" name="spouseName"></td></tr>
+
+        <tr><td colspan="2" class="sec">Part B: Address &amp; LSGI Details</td></tr>
+        <tr><td class="l">District <span class="req">*</span></td><td><select id="district" name="district">
+          <option value="">--Select District--</option>
+          <option>Thiruvananthapuram</option><option>Kollam</option><option>Pathanamthitta</option><option>Alappuzha</option><option>Kottayam</option><option>Idukki</option><option>Ernakulam</option>
+          <option>Thrissur</option><option>Palakkad</option><option>Malappuram</option><option>Kozhikode</option><option>Wayanad</option><option>Kannur</option><option>Kasaragod</option></select></td></tr>
+        <tr><td class="l">Type of LSGI <span class="req">*</span></td><td><select id="lsgiType" name="lsgiType">
+          <option value="">--Select--</option><option value="GP">Grama Panchayat</option><option value="MUN">Municipality</option><option value="CORP">Corporation</option></select></td></tr>
+        <tr><td class="l">Name of LSGI <span class="req">*</span></td><td><input type="text" id="lsgiName" name="lsgiName"></td></tr>
+        <tr><td class="l">Ward No. <span class="req">*</span></td><td><input type="text" id="wardNo" name="wardNo" maxlength="3"></td></tr>
+        <tr><td class="l">House Name / No. <span class="req">*</span></td><td><input type="text" id="houseName" name="houseName"></td></tr>
+        <tr><td class="l">PIN Code <span class="req">*</span></td><td><input type="text" id="pincode" name="pincode" maxlength="6"></td></tr>
+        <tr><td class="l">Ration Card No.</td><td><input type="text" id="rationCard" name="rationCard"></td></tr>
+
+        <tr><td colspan="2" class="sec">Part C: Income &amp; Bank Details</td></tr>
+        <tr><td class="l">Annual Family Income (Rs.) as per Village Officer certificate <span class="req">*</span></td><td><input type="text" id="annualIncome" name="annualIncome"></td></tr>
+        <tr><td class="l">Name of Bank <span class="req">*</span></td><td><input type="text" id="bankName" name="bankName"></td></tr>
+        <tr><td class="l">IFSC <span class="req">*</span></td><td><input type="text" id="ifsc" name="ifsc" maxlength="11"></td></tr>
+        <tr><td class="l">Bank A/c No. <span class="req">*</span></td><td><input type="text" id="accountNo" name="accountNo"></td></tr>
+        <tr><td class="l">Upload Income Certificate (JPG/PDF, max 1MB) <span class="req">*</span></td><td><input type="file" id="incomeCert" name="incomeCert" accept=".jpg,.jpeg,.pdf"></td></tr>
+        <tr><td class="l">Remarks, if any</td><td><textarea id="remarks" name="remarks" rows="2"></textarea></td></tr>
+
+        <tr><td colspan="2" class="sec">Part D: Verification</td></tr>
+        <tr><td class="l">Enter the characters shown <span class="req">*</span></td><td><span class="captcha" aria-hidden="true">7kP2x</span> <input type="text" id="captcha" name="captcha" style="width:90px"></td></tr>
+        <tr><td colspan="2"><input type="checkbox" id="declaration" name="declaration"> I hereby declare that the information furnished above is true and correct to the best of my knowledge and belief. <span class="req">*</span></td></tr>
+      </table>
+      <p class="btns"><input type="submit" id="btnSubmit" value="Submit Application"><input type="button" id="btnDraft" value="Save as Draft"><input type="reset" value="Reset"></p>
+    </form>
+  </div>
+</div>
+<div class="foot">Content owned by the Department (Demo). Best viewed in IE 11 at 1024x768 resolution. Visitors: 0012894</div>
+<script>
+  document.getElementById('appForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var missing = [];
+    ['applicantName','dob','pensionType','aadhaar','mobile','district','lsgiType','lsgiName','wardNo','houseName','pincode','annualIncome','bankName','ifsc','accountNo','captcha'].forEach(function (id) {
+      if (!document.getElementById(id).value.trim()) missing.push(id);
+    });
+    if (!document.querySelector('[name=gender]:checked')) missing.push('gender');
+    if (!document.getElementById('declaration').checked) missing.push('declaration');
+    var done = document.getElementById('done');
+    done.style.display = 'block';
+    if (missing.length) {
+      done.style.borderColor = 'red'; done.style.color = '#a00'; done.style.background = '#fff0f0';
+      done.textContent = 'Error: please fill mandatory fields: ' + missing.join(', ');
+    } else {
+      done.style.borderColor = 'green'; done.style.color = '#064'; done.style.background = '#eaffea';
+      done.textContent = 'Application submitted successfully (DEMO). Reference No: DEMO-' + Math.floor(100000 + Math.random() * 900000);
+    }
+    window.scrollTo(0, 0);
+  });
+</script>
+</body>
+</html>

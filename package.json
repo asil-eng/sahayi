@@ -1,0 +1,12 @@
+{
+  "name": "sahayi",
+  "private": true,
+  "version": "0.2.0",
+  "description": "Sahayi: simple, voice-guided government websites for senior citizens and persons with disabilities in Kerala.",
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync.mjs",
+    "check": "node --check core/sahayi-core.js && node --check core/templates.js && node --check core/openai.js",
+    "mobile": "npm run sync && cd mobile && npx expo start"
+  }
+}

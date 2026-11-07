@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Sahayi – Simple Government Websites",
+  "version": "0.2.0",
+  "description": "Turns confusing government websites into a calm, large, step-by-step Malayalam/English view, with voice form filling.",
+  "permissions": ["storage", "scripting", "activeTab", "unlimitedStorage"],
+  "host_permissions": ["https://api.openai.com/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_title": "Sahayi: open simple view (Alt+S)" },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["templates.js", "sahayi-core.js", "boot.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": { "default": "Alt+S" },
+      "description": "Open or close Sahayi on this page"
+    }
+  }
+}

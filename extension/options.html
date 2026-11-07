@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sahayi Settings</title>
+<style>
+  :root { --bg:#FBF8F1; --surface:#fff; --text:#16181D; --muted:#3D4350; --accent:#0A4D99; --border:#B9C0CB; --ok:#0B6B2E; --bad:#9B1C1C; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:18px/1.6 "Noto Sans Malayalam", "Malayalam Sangam MN", system-ui, sans-serif; }
+  main { max-width: 640px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { margin: 0 0 4px; color: var(--accent); }
+  h2 { margin: 36px 0 8px; font-size: 1.15em; }
+  label { display:block; font-weight:700; margin: 18px 0 6px; }
+  input, select { width:100%; min-height:52px; padding:8px 12px; font:inherit; border:2px solid var(--text); border-radius:10px; background:var(--surface); }
+  .hint { color: var(--muted); font-size: .85em; margin: 4px 0 0; }
+  button { min-height:56px; padding: 10px 20px; font:inherit; font-weight:800; border-radius:12px; border:3px solid var(--accent); background:var(--surface); color:var(--accent); cursor:pointer; margin: 16px 8px 0 0; }
+  button.primary { background: var(--accent); color:#fff; }
+  :focus-visible { outline: 4px solid #FFBF00; outline-offset: 3px; }
+  #status, #test-out { margin-top: 14px; font-weight: 700; min-height: 1.6em; }
+  .ok { color: var(--ok); } .bad { color: var(--bad); }
+  details { margin-top: 18px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>സഹായി · Sahayi</h1>
+  <p class="hint">Settings for the Sahayi extension.</p>
+
+  <label for="apiKey">OpenAI API key</label>
+  <input id="apiKey" type="password" autocomplete="off" placeholder="sk-...">
+  <p class="hint">Stored only in this browser. Used for page simplification and voice.</p>
+
+  <details>
+    <summary>Advanced (models)</summary>
+    <label for="model">Text model</label>
+    <input id="model">
+    <label for="ttsModel">Speech model (text → voice)</label>
+    <input id="ttsModel">
+    <label for="sttModel">Listening model (voice → text)</label>
+    <input id="sttModel">
+    <label for="voice">Voice</label>
+    <input id="voice">
+  </details>
+
+  <button id="save" class="primary">Save</button>
+  <div id="status" role="status"></div>
+
+  <h2>Test Malayalam voice</h2>
+  <p class="hint">Check this first: it shows how well speaking and listening work in Malayalam with your key.</p>
+  <button id="test-speak">🔊 Speak a Malayalam sentence</button>
+  <button id="test-listen">🎤 Record 5 seconds &amp; transcribe</button>
+  <div id="test-out" role="status"></div>
+
+  <h2>Clear saved simplifications</h2>
+  <p class="hint">Pages simplified by AI are cached so they open instantly next time.</p>
+  <button id="clear">Clear cache</button>
+</main>
+<script type="module" src="options.js"></script>
+</body>
+</html>
